@@ -71,7 +71,7 @@ public class practica {
 						break;
 					case ".":
 						System.out.println(
-								"See ya later Alligator o Adios");
+								"Adios");
 						System.exit(0);
 					default:
 						System.out.println(

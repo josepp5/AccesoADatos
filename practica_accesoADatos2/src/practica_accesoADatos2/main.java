@@ -1,5 +1,6 @@
 package practica_accesoADatos2;
 
+import java.sql.SQLException;
 import java.util.Scanner;
 
 public class main {
@@ -7,7 +8,13 @@ public class main {
 	public static void main(String[] args) {
 		
 		practica prac = new practica();
-		Gestor_proyectos gp = new Gestor_proyectos();
+		Gestor_proyectos gp = null;
+		try {
+			gp = new Gestor_proyectos();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		Scanner scanner = new Scanner(System.in);
 		
 		System.out.println("Elige una opcion");
@@ -20,7 +27,12 @@ public class main {
 		switch(opcion) {
 			case 1 : prac.Consulta("clientes");
 			case 2 : prac.PedirTabla();
-			case 3 : gp.menuGestor();
+			case 3 : try {
+				gp.menuGestor();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		
 			
 		}
