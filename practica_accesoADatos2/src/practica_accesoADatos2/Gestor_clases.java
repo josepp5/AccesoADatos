@@ -24,6 +24,7 @@ public class Gestor_clases {
 		System.out.println("2 - Introducir nuevo proyecto");
 		System.out.println("3 - Asignar un empleado a un proyecto");
 		System.out.println("4 - Mostrar Los empleados asignados a un proyecto (ejercicio 5)");
+		System.out.println("5 - Volver al menu principal");
 		
 		int opcion = scanner.nextInt();
 		
@@ -141,6 +142,8 @@ public class Gestor_clases {
 			}
 			menuClases();
 			}
+		
+		case 5 : main.MenuPrincipal();
 		
 		default : menuClases();
 		}

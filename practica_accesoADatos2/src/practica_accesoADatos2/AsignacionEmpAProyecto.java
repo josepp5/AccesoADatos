@@ -14,7 +14,8 @@ public class AsignacionEmpAProyecto {
 	LocalDate fechaInicio;
 	LocalDate fechaFin;
 	
-	
+	////Ejercicio 4 ////
+	// Esta funcion hace el insert de la asignacion de un proyecto en la Base de datos
 	public Boolean save(AsignacionEmpAProyecto asigEmpToProy) throws SQLException {
 		try {
 			String query = "INSERT INTO asig_proyectos VALUES('"+dniEmp+"','"+num_proy+"','"+fechaInicio+"','"+fechaFin+"')";
@@ -33,6 +34,7 @@ public class AsignacionEmpAProyecto {
 			}
 	}
 	
+	// Constructor que no coge parametros
 	public AsignacionEmpAProyecto() throws SQLException {
 		this.num_proy = num_proy;
 		this.dniEmp = dniEmp;
@@ -40,6 +42,15 @@ public class AsignacionEmpAProyecto {
 		this.fechaFin = fechaFin;
 	}
 	
+	// Constructor al que le pasamos unicamente el campo de la primary key
+	public AsignacionEmpAProyecto(int num_proy, String dniEmp, LocalDate fechaInicio ) throws SQLException {
+		this.num_proy = num_proy;
+		this.dniEmp = dniEmp;
+		this.fechaInicio = fechaInicio;
+		this.fechaFin = fechaFin;
+	}
+	
+	// Getter y Setters
 	public String getDniEmp() {
 		return this.dniEmp;
 	}

@@ -13,7 +13,8 @@ public class Empleado {
 	String dni;
 	String nombre;
 	
-	
+	//// Ejercicio 4 ////
+	// Esta funcion hace el insert de un empleado en la Base de datos 
 	public Boolean save(Empleado e) throws SQLException {
 		try {
 			String query = "INSERT INTO empleados VALUES('"+dni+"','"+nombre+"')";
@@ -29,11 +30,19 @@ public class Empleado {
 		}
 	}
 	
+	// Constructor que no coge parametros
 	public Empleado() throws SQLException {
 		this.dni = dni;
 		this.nombre = nombre;
 	}
 	
+	// Constructor al que le pasamos unicamente el campo de la primary key
+	public Empleado(String dni) throws SQLException {
+		this.dni = dni;
+		this.nombre = nombre;
+	}
+	
+	// Getter y Setters
 	public String getDni() {
 		return this.dni;
 	}

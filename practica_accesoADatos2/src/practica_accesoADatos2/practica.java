@@ -43,7 +43,7 @@ public class practica {
 					System.out.println(rs.getMetaData().getColumnName(i) + " : " + rs.getString(i));
 				} //////////////////////
 				System.out.println("");
-				System.out.println("Selecciona una opcion : k = siguiente,  d = anterior, . = terminar el programa");
+				System.out.println("Selecciona una opcion : k = siguiente,  d = anterior, . = terminar el programa, m = Volver al Menu Principal");
 				opcion = scanner.nextLine();
 								
 				
@@ -58,6 +58,9 @@ public class practica {
 						break;
 					case "d":
 						if(!rs.isFirst()) rs.previous(); else System.out.println("Estas viendo el primer cliente");
+						break;
+					case "m":
+						System.out.println("Estas viendo el primer cliente"); main.MenuPrincipal();
 						break;
 					case ".":
 						System.out.println("Adios");

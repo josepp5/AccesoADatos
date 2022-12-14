@@ -20,6 +20,8 @@ public class Proyecto {
 	LocalDate fechaInicio;
 	LocalDate fechaFin;
 	
+	
+	//// Ejercicio 5 /////////////////////////
 	public ArrayList<String> getListAsigEmpleados(int num_proy) {
 		try {
 			String query = "SELECT empleados.DNI_NIF, empleados.NOMBRE FROM empleados INNER JOIN asig_proyectos ON empleados.DNI_NIF = asig_proyectos.DNI_NIF_EMP where NUM_PROY = " + num_proy + ";";
@@ -54,7 +56,7 @@ public class Proyecto {
 		}
 	}
 	
-	
+	//// Ejercicio 4 de aqui en adelante ////////
 	public Boolean save(Proyecto e) throws SQLException {
 		try {
 			String query = "INSERT INTO proyectos VALUES ('"+num_proy+"','"+nombre+"','"+dniJefe+"','"+fechaInicio+"','"+fechaFin+"');";
@@ -70,6 +72,7 @@ public class Proyecto {
 		}
 	}
 	
+	// Constructor que no coge parametros
 	public Proyecto() throws SQLException {
 		this.num_proy = num_proy;
 		this.nombre = nombre;
@@ -78,6 +81,16 @@ public class Proyecto {
 		this.fechaFin = fechaFin;
 	}
 	
+	// Constructor al que le pasamos unicamente el campo de la primary key
+	public Proyecto(int num_proy) throws SQLException {
+		this.num_proy = num_proy;
+		this.nombre = nombre;
+		this.dniJefe = dniJefe;
+		this.fechaInicio = fechaInicio;
+		this.fechaFin = fechaFin;
+	}
+	
+	// Getters y Setters
 	public String getDniJefe() {
 		return this.dniJefe;
 	}

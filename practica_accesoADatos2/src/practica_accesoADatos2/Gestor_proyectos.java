@@ -19,16 +19,19 @@ public class Gestor_proyectos {
 		conexion = main.connect();
 	}
 	
+	// Esta funcion contiene el menu con las diferentes opciones que nos pide el ejercicio
 	public void menuGestor() throws SQLException {
 		System.out.println("Que quieres gestionar?");
 		System.out.println("1 - Introducir nuevo empleado");
 		System.out.println("2 - Introducir nuevo proyecto");
 		System.out.println("3 - Asignar un empleado a un proyecto");
+		System.out.println("4 - Volver al menu principal");
 		
 		int opcion = scanner.nextInt();
 		
 		switch(opcion) {
 		
+		// Este caso Introducira un nuevo empleado en la Base de Datos
 		case 1 : {
 			System.out.println("Introduce dni");
 			String dni = scanner.next();
@@ -40,7 +43,7 @@ public class Gestor_proyectos {
 			System.out.println("");
 			menuGestor();
 			}
-		
+		// Este caso Introducira un nuevo proyecto en la Base de Datos
 		case 2 : {
 			System.out.println("Introduce numero de proyecto");
 			int num_proy = scanner.nextInt();
@@ -67,7 +70,7 @@ public class Gestor_proyectos {
 			System.out.println("");
 			menuGestor();
 			}
-		
+		// Este caso asignara un nuevo empleado al proyecto y lo introducira en la Base de Datos
 		case 3 : {
 			System.out.println("Introduce dni del empleado");
 			String dni = scanner.next();
@@ -93,16 +96,17 @@ public class Gestor_proyectos {
 			System.out.println("");
 			menuGestor();
 			}
+		
+		case 4 : System.out.println(""); main.MenuPrincipal();
 		}
 	}
 	
+	////// Funciones con los Insert para introducir en la base de datos correspondiente //////////////////////////
+	// Esta funcion devuelve TRUE si el empleado se ha introducido correctamente
 	public Boolean nuevoEmpleado(String dni, String nombre) throws SQLException {
 		try {
-			//String query = "INSERT INTO empleados VALUES(?,?);";
 			String query = "INSERT INTO empleados VALUES('"+dni+"','"+nombre+"')";
 			PreparedStatement sta = conexion.prepareStatement(query);
-			//sta.setString(1, dni);
-			//sta.setString(2, nombre);
 			sta.executeUpdate(query);
 			
 			sta.close();
@@ -114,6 +118,7 @@ public class Gestor_proyectos {
 		}
 	}
 	
+	// Esta funcion devuelve el numero del proyecto si el proyecto se ha introducido correctamente
 	public int nuevoProyecto(int num_proy, String nombre, String dniJefe, LocalDate fechaInicio, LocalDate fechaFin) throws SQLException {
 		try {
 			String query = "INSERT INTO proyectos VALUES ('"+num_proy+"','"+nombre+"','"+dniJefe+"','"+fechaInicio+"','"+fechaFin+"');";
@@ -129,14 +134,11 @@ public class Gestor_proyectos {
 		return num_proy;
 	}
 	
+	// Esta funcion devuelve TRUE si se ha asignado y se ha introducido correctamente
 	public Boolean asignaEmpAProyecto(String dniEmp, int num_proy, LocalDate fechaInicio, LocalDate fechaFin) throws SQLException {
 		try {
 			String query = "INSERT INTO asig_proyectos VALUES('"+dniEmp+"','"+num_proy+"','"+fechaInicio+"','"+fechaFin+"')";
 			PreparedStatement sta = conexion.prepareStatement(query);
-			/*sta.setString(1, dniEmp);
-			sta.setString(2, num_proy);
-			sta.setDate(3, fechaInicio);
-			sta.setDate(4, fechaFin);*/
 			sta.executeUpdate(query);
 			
 			sta.close();
