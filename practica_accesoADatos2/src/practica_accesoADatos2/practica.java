@@ -10,24 +10,14 @@ import java.sql.Statement;
 import java.util.Scanner;
 
 public class practica {
+	
 	Connection conexion;
 	Scanner scanner = new Scanner(System.in);
 
 	public practica() { ////// Constructor CONEXION /////////
-		try {
-			String url1 = "jdbc:mysql://localhost:3306/practica_accesoadatos2";
-			String user = "root";
-			String password = "pepe1223";
-			conexion = DriverManager.getConnection(url1, user, password);
-			if (conexion != null) {
-				System.out.println("Conectado a practica_accesoadatos…");
-			}
-		} catch (SQLException ex) {
-			System.out.println("ERROR:dirección no válida o usuario/clave");
-			ex.printStackTrace();
-		}
+		conexion = main.connect();
 	}
-
+	
 	public static void muestraErrorSQL(SQLException e) {
 		System.err.println("SQL ERROR mensaje: " + e.getMessage());
 		System.err.println("SQL Estado: " + e.getSQLState());
@@ -55,8 +45,8 @@ public class practica {
 				System.out.println("");
 				System.out.println("Selecciona una opcion : k = siguiente,  d = anterior, . = terminar el programa");
 				opcion = scanner.nextLine();
+								
 				
-
 				if (opcion.matches("[0-9]+")) {
 					if(Integer.parseInt(opcion) <= numeroFilas && Integer.parseInt(opcion) > 0) {
 					rs.absolute(Integer.parseInt(opcion));
@@ -70,8 +60,7 @@ public class practica {
 						if(!rs.isFirst()) rs.previous(); else System.out.println("Estas viendo el primer cliente");
 						break;
 					case ".":
-						System.out.println(
-								"Adios");
+						System.out.println("Adios");
 						System.exit(0);
 					default:
 						System.out.println(

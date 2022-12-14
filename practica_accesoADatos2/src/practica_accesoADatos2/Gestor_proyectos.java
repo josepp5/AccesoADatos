@@ -15,20 +15,8 @@ public class Gestor_proyectos {
 	Scanner scanner = new Scanner(System.in); 
 	
 	public Gestor_proyectos() throws SQLException {
-		////// Constructor CONEXION /////////
-			try {
-				String url1 = "jdbc:mysql://localhost:3306/practica_accesoadatos2";
-				String user = "root";
-				String password = "pepe1223";
-				conexion = DriverManager.getConnection(url1, user, password);
-				if (conexion != null) {
-					System.out.println("Conectado a practica_accesoadatos…");
-				}
-
-			} catch (SQLException ex) {
-				System.out.println("ERROR:dirección no válida o usuario/clave");
-				ex.printStackTrace();
-			}
+		////// CONEXION /////////
+		conexion = main.connect();
 	}
 	
 	public void menuGestor() throws SQLException {
@@ -130,11 +118,6 @@ public class Gestor_proyectos {
 		try {
 			String query = "INSERT INTO proyectos VALUES ('"+num_proy+"','"+nombre+"','"+dniJefe+"','"+fechaInicio+"','"+fechaFin+"');";
 			PreparedStatement sta = conexion.prepareStatement(query);
-			/*sta.setString(1, num_proy);
-			sta.setString(2, nombre);
-			sta.setString(3, dniJefe);
-			sta.setDate(4, fechaInicio);
-			sta.setDate(5, fechaFin);*/
 			sta.executeUpdate(query);
 			
 			sta.close();
