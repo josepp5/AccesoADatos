@@ -249,19 +249,4 @@ public class main {
 		fr.close();
 		return false;
 	}
-
-	/*
-	 * /// Elimina todos los datos y vuelve a escribir el fichero desde 0 public
-	 * static void ActualizarFichero() throws IOException { DataOutputStream dataOS
-	 * = new DataOutputStream(new FileOutputStream(file, false));
-	 * 
-	 * for (int i = 0; i < lista.size(); i++) { String nombre =
-	 * lista.get(i).getNombre() ; String dni = lista.get(i).getDni();
-	 * dataOS.writeUTF(nombre); // recupera el nombre dataOS.writeUTF(dni); }
-	 * dataOS.close(); // cerrar stream }
-	 * 
-	 * // Recuperar datos desde el array de personas public static void RecuperarO()
-	 * { for (int i = 0; i < lista.size(); i++) { System.out.println("Nombre : " +
-	 * lista.get(i).getNombre() + "| DNI : " + lista.get(i).getDni()); } }
-	 */
 }
